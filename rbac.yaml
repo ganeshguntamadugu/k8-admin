@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: expense-trainee-r
+  namespace: expense
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding # You need to already have a Role named "pod-reader" in that namespace.
+metadata:
+  name: expense-trainee-rb
+  namespace: expense
+subjects:
+# You can specify more than one "subject"
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: gana # "name" is case sensitive
+roleRef:
+  # "roleRef" specifies the binding to a Role / ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role #this must be Role or ClusterRole
+  name: expense-trainee-r # this must match the name of the Role or ClusterRole you wish to bind to
+  
