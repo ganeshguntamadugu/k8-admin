@@ -15,3 +15,11 @@ data:
       username: gana
       groups:
         - expense-trainee
+    - userarn: arn:aws:iam::324860463113:user/bhanu
+      username: bhanu
+      groups:
+        - expense-lead
+    - userarn: arn:aws:iam::324860463113:user/amrutha
+      username: amrutha
+      groups:
+        - expense-manager
